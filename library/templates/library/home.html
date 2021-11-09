@@ -1,0 +1,75 @@
+{% extends "library/base.html" %}
+{% load static %}
+{% block content %}
+    <div xmlns:margin-left="http://www.w3.org/1999/xhtml">
+        <img src="{% static 'library/Home-cover.jpg' %}" class="img-fluid" alt="Responsive image">
+    </div>
+    <div class="container" style="margin-top: 20px;">
+        <h1>
+			Safety First!
+		</h1>
+		<ul >
+			<li>
+				Per University guidelines, masks must be worn at all times, inside all library locations, by everyone
+				regardless of vaccination status.
+			</li>
+			<li>
+				Libraries, like all buildings on campus, have reduced occupancy limits – once the limit is reached,
+				entry is on a one-in, one-out basis.
+			</li>
+			<li>
+				As of September 30 some Pitt ID cards will be expiring which will prevent you from renewing your items.
+				To solve this, please contact Panther Central to renew your ID (can be done remotely).
+			</li>
+			<li>
+				Group study rooms are once again reservable, with reduced maximum occupancies. Please note that Bradford
+				Hanley Library does not have group study rooms available at this time. Hillman Study rooms will be
+				reservable starting on January 19. Study rooms at Langley and Regional libraries will remain as
+				first-come, first-served.
+			</li>
+			<li>
+				Access to library spaces is limited to Pitt faculty, students, and staff with a valid Pitt ID. View our
+				current hours.
+			</li>
+			<li>
+				If you have a special borrower card, you may request materials via our no-contact pickup services.
+				Please visit our website on library access for Special Borrowers for more information about this
+				service.
+			</li>
+			<li>
+				If you are a visiting researcher not affiliated with Pitt, you may access Archives and Special
+				Collections by scheduling an appointment. To request an appointment, please follow the instructions
+				further down this page.
+			</li>
+			<li>
+				Masks must be worn at all times, so no food or drink is permitted in the libraries. The Cup and Chaucer
+				café at Hillman Library is closed at this time. Food from the Hanley Library Café must be consumed
+				outside the library space.
+			</li>
+			<li>
+				<strong>The Hogwarts Library book drop is open.</strong> Please return your items via the book drop
+				rather than bringing them into the Library. Directions are provided further down this page.
+
+			</li>
+		</ul>
+    </div>
+    <div class="stat-bar">
+		<ul class="ul-stat">
+
+			<li>
+				<img src="{% static 'library/book.png' %}" class="img-style">
+			</li>
+			<li style="text-align: center; font-size: 40px;">
+                {{ books_count }}
+			</li>
+		</ul>
+		<ul class="ul-stat">
+			<li>
+				<img src="{% static 'library/user.png' %}" class="img-style">
+			</li>
+			<li style="text-align: center; font-size: 40px;">
+                <span>{{ user_count }}</span>
+			</li>
+		</ul>
+	</div>
+{% endblock content %}

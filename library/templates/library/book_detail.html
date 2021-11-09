@@ -1,0 +1,36 @@
+{% extends "library/base.html" %}
+{% block content %}
+        <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
+              <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+                {%  if object.author == user %}
+                    <div>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'book-update' object.id %}">Edit</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'book-delete' object.id %}">Delete</a>
+                    </div>
+                {%  endif %}
+            </div>
+            <h2 class="article-title">{{ object.title }}</h2>
+            <p class="article-content"> Author: {{ object.book_author }}</p>
+            <p class="article-content"> ISBN: {{ object.isbn }}</p>
+            <p class="article-content">content: {{ object.content }}</p>
+          {% if user.is_authenticated %}
+                  {% if object.borrowed %}
+                      {% if  object.username == user.get_username %}
+                          <p class="article-content">Return Date: {{ object.return_time }}</p>
+
+                      <a class="btn btn-warning btn-sm mt-1 mb-1" href="{% url 'book-return' object.id %}">Return</a>
+                      <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'book-extend' object.id %}">Change Return Date</a>
+                      {% else %}
+                          <span class="btn btn-success btn-sm mt-1 mb-1" href="">Not avalible</span>
+                  {% endif %}
+          {% else %}
+                   <a class="btn btn-dark btn-sm mt-1 mb-1" href="{% url 'book-borrow' object.id %}">Borrow</a>
+          {% endif %}
+          {% endif %}
+          </div>
+        </article>
+{% endblock content %}
